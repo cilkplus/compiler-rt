@@ -101,7 +101,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
   list(APPEND COMMON_FLAGS -D_DARWIN_C_SOURCE)
 endif()
 
-string(TOUPPER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
+string(TOUPPER "${CMAKE_BUILD_TYPE}" BUILD_TYPE)
 
 # Set CILKRTS_DEBUG=1 to debug the runtime itself.
 set(CILKRTS_DEBUG 0 CACHE BOOL "Enable debugging the cilk runtime")
@@ -122,9 +122,9 @@ else()
   list(APPEND COMMON_FLAGS -DNDEBUG)
 endif()
 
-string(REPLACE " " ";" CFLAGS ${CMAKE_C_FLAGS_${BUILD_TYPE}})
+string(REPLACE " " ";" CFLAGS "${CMAKE_C_FLAGS_${BUILD_TYPE}}")
 list(APPEND CFLAGS "-std=c99")
-string(REPLACE " " ";" CXXFLAGS ${CMAKE_CXX_FLAGS_${BUILD_TYPE}})
+string(REPLACE " " ";" CXXFLAGS "${CMAKE_CXX_FLAGS_${BUILD_TYPE}}")
 
 # Build objects using the newly built clang.
 set(out_objs)
